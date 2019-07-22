@@ -7,14 +7,15 @@ def index(request):
     try:
         barcode = request.POST['barcode']
 
+        
+        context['scanned_barcode'] = barcode
+
+        if len(barcode) == 12:
+            barcode = '0' + barcode
+        
         if not validateBarcode(barcode):
             context['error_message'] = "Invalid barcode"
             return render(request, 'barcodeScanner/index.html', context)
-
-        context['scanned_barcode'] = barcode
-        
-        if len(barcode) == 13 and barcode[0] == '0':
-            barcode = barcode[1:]
        
         vId = str(getVendorId(barcode))
         pluCode = str(getPLU(barcode))
@@ -44,23 +45,23 @@ def index(request):
     return render(request, 'barcodeScanner/index.html', context)
 
 def validateBarcode(barcode):
-    if len(barcode) == 13 and barcode[0] != '0':
+    if barcode[0] != '0':
         return False
 
     # Barcode is invalid if weight is not a number
-    if not barcode[7:11].isdigit():
+    if not barcode[8:12].isdigit():
         return False
 
     return True
 
 def getVendorId(barcode):
-    return barcode[0:3]
+    return barcode[1:4]
 
 def getPLU(barcode):
-    return barcode[3:6]
+    return barcode[4:7]
 
 def getWeight(barcode):
     # Put the decimal point
-    weight = barcode[7:11]
+    weight = barcode[8:12]
     return weight[0:-2] + '.' + weight[-2:]
 

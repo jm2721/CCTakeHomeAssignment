@@ -1,5 +1,7 @@
 from barcodeScanner.models import Vendor, Product
 
+# To use this method open a Django shell (so all dependencies are present)
+# and run this method.
 def generateDummyData():
     for p in Product.objects.all():
         p.delete()
@@ -25,6 +27,3 @@ def generateDummyData():
     for vendor in vendors.split('|'):
         fields = vendor.split(':')
         v = Vendor.objects.create(name=fields[0], vendorId=fields[1])
-
-if __name__=="__main__":
-    generateDummyData()

@@ -1,0 +1,18 @@
+
+Barcode Scanner App for a takehome assignment
+
+Sample data:
+Products:
+| Name | PLU | Price | Weight |
+|Ground Beef|493|4.99|1.02|
+|Ground Pork|456|6.99|2.02|
+|Wagyu Beef|468|10.89|0.5|
+|Ribeye Steak|357|8.99|1.0
+            
+Vendors:
+| Name | Vendor Id |
+|Hutterian Farm|123|
+|Icebox Flats Farm|345|
+|Made Up Farm|678
+
+

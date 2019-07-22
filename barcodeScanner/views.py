@@ -46,6 +46,11 @@ def index(request):
 def validateBarcode(barcode):
     if len(barcode) == 13 and barcode[0] != '0':
         return False
+
+    # Barcode is invalid if weight is not a number
+    if not barcode[7:11].isdigit():
+        return False
+
     return True
 
 def getVendorId(barcode):

@@ -12,13 +12,11 @@ def generateDummyData():
             Ground Beef:493:4.99:1.02|
             Ground Pork:456:6.99:2.02|
             Wagyu Beef:468:10.89:0.5|
-            Ribeye Steak:357:8.99:1.0
-        """
+            Ribeye Steak:357:8.99:1.0"""
     vendors = """
             Hutterian Farm:123|
             Icebox Flats Farm:345|
-            Made Up Farm:678
-        """
+            Made Up Farm:678"""
     
     for product in products.split('|'):
         fields = product.split(':')
